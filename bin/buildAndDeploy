@@ -1,0 +1,5 @@
+./gradlew shadowJar
+./bin/uploadToS3
+./bin/deployToAws
+
+# say Deployment completed
