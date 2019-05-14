@@ -1,6 +1,7 @@
 package render;
 
 
+import freemarker.template.Configuration;
 import io.micronaut.context.env.Environment;
 import io.micronaut.core.util.CollectionUtils;
 import io.micronaut.http.MediaType;
@@ -13,6 +14,7 @@ import io.micronaut.views.ModelAndView;
 import io.micronaut.views.ViewsConfiguration;
 import io.micronaut.views.freemarker.FreemarkerFactory;
 import io.micronaut.views.freemarker.FreemarkerViewsRendererConfiguration;
+import io.micronaut.views.freemarker.MyFreemarkerFactoryHelper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -35,28 +37,10 @@ public class RenderController {
     @Produces(value=MediaType.TEXT_HTML)
     @Secured(SecurityRule.IS_ANONYMOUS)
     public ModelAndView displayHomePage() {
-//        io.micronaut.views.freemarker.VersionTypeConverter
+        MyFreemarkerFactoryHelper myFreemarkerFactoryHelper = new MyFreemarkerFactoryHelper();
 
-        FreemarkerViewsRendererConfiguration fmVRC = new FreemarkerViewsRendererConfiguration() {
-            @Override
-            public String getDefaultExtension() {
-                return "ftl";
-            }
-
-            @Override
-            public freemarker.template.Version getIncompatibleImprovements() {
-                return new freemarker.template.Version(2, 3, 0);
-            }
-        };
-
-        ViewsConfiguration vc = new ViewsConfiguration() {
-            @Override
-            public String getFolder() {
-                return "views";
-            }
-        };
-
-        FreemarkerFactory ff = new FreemarkerFactory();
+        Configuration config = myFreemarkerFactoryHelper.getConfiguration(environment);
+        log.info("CONFIG: {}", config);
 
         ModelAndView mav = new ModelAndView("pages/home", CollectionUtils.mapOf("loggedIn", true, "username", "sdelamo"));
         return mav;
