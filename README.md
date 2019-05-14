@@ -23,3 +23,5 @@ Example of using FreeMarker template engine with Micronaut.  Also trying to get 
    ```
    {"view":"pages/home","model":{"loggedIn":true,"username":"sdelamo"}}
 	```
+	
+1. Navigate to the `Invoke Url/homeManualRender` from a web browser to see correct output
