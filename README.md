@@ -25,3 +25,7 @@ Example of using FreeMarker template engine with Micronaut.  Also trying to get 
 	```
 	
 1. Navigate to the `Invoke Url/homeManualRender` from a web browser to see correct output
+   * For example: 
+   ```
+   https://mhhyh2jks1.execute-api.us-east-1.amazonaws.com/Prod/homeManualRender
+   ```

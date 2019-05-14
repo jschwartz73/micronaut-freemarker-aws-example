@@ -40,6 +40,8 @@ public class RenderController {
 
         Writable w = freemarkerViewsRenderer.render("pages/home", mav.getModel());
 
+        log.info("MANUAL RENDER");
+
         StringWriter sw = new StringWriter();
         try {
             w.writeTo(sw);
