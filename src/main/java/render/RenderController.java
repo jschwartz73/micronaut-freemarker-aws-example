@@ -1,6 +1,7 @@
 package render;
 
 
+//import io.micronaut.context.annotation.Requires;
 import io.micronaut.core.io.Writable;
 import io.micronaut.core.util.CollectionUtils;
 import io.micronaut.http.MediaType;
@@ -10,6 +11,7 @@ import io.micronaut.http.annotation.Produces;
 import io.micronaut.security.annotation.Secured;
 import io.micronaut.security.rules.SecurityRule;
 import io.micronaut.views.ModelAndView;
+import io.micronaut.views.View;
 import io.micronaut.views.freemarker.FreemarkerViewsRenderer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,8 +19,11 @@ import org.slf4j.LoggerFactory;
 import javax.inject.Inject;
 import java.io.IOException;
 import java.io.StringWriter;
+import java.util.Map;
 
 @Secured(SecurityRule.IS_ANONYMOUS)
+//@Requires(property = "spec.name", value = "freemarker")
+//@Requires(classes = FreemarkerViewsRenderer.class)
 @Controller("/")
 public class RenderController {
 
@@ -53,10 +58,18 @@ public class RenderController {
     }
 
     @Get("/home")
-    @Produces(value=MediaType.TEXT_HTML)
+//    @Produces(value=MediaType.TEXT_HTML)
     @Secured(SecurityRule.IS_ANONYMOUS)
     public ModelAndView mnRenderHomePage() {
         ModelAndView mav = new ModelAndView("pages/home", CollectionUtils.mapOf("loggedIn", true, "username", "sdelamo"));
         return mav;
+    }
+
+    @View("pages/home")
+    @Get("/homeView")
+//    @Produces(value=MediaType.TEXT_HTML)
+    @Secured(SecurityRule.IS_ANONYMOUS)
+    public Map<String, Object> mnRenderHomePageView() {
+        return CollectionUtils.mapOf("loggedIn", true, "username", "sdelamo");
     }
 }

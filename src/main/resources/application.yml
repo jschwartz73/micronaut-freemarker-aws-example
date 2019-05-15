@@ -22,3 +22,8 @@ micronaut:
 
   security:
     enabled: disabled
+
+endpoints:
+  all:
+    sensitive: false
+    enabled: true
