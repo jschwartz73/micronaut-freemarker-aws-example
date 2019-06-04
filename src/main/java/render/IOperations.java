@@ -8,11 +8,11 @@ import java.util.Map;
 
 public interface IOperations {
     @Get("/home")
-    ModelAndView mnRenderHomePage();
+    ModelAndView httpGetHomePage();
 
-    @Post("/home")
-    ModelAndView mnRenderHomePage2();
+    @Post("/json")
+    Map<String, Object> jsonPost();
 
-    @Post("/post")
-    Map<String, Object> customPost();
+    @Get("/json")
+    Map<String, Object> jsonGet();
 }
