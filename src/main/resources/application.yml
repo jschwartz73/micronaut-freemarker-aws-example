@@ -5,8 +5,10 @@ micronaut:
   http:
     services:
       my-client:
-        url: "${APIGW_BASE_URL:`http://localhost:8080`}"
-        path: "/"
+        url: "${APIGW_BASE_URL:`https://xk2ikhvjwe.execute-api.us-east-1.amazonaws.com/Prod`}"
+#        url: "${APIGW_BASE_URL:`http://localhost:8080`}"
+    client:
+      read-timeout: 30s
 
   views:
     freemarker:

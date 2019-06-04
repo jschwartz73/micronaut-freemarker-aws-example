@@ -27,6 +27,7 @@ public class StreamLambdaHandler implements RequestStreamHandler {
 
         String in = IOUtils.toString(inputStream);
 
+
         System.out.println("RAW.IN: " + in);
 
         InputStream is2 = IOUtils.toInputStream(in);

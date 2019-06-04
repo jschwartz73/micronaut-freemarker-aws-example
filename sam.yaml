@@ -18,7 +18,7 @@ Resources:
         GetResource:
           Type: Api
           Properties:
-            Path: /{proxy+}
+            Path: /jeff/{proxy+}
             Method: any
 
 Outputs:

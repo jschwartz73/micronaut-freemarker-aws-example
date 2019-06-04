@@ -16,7 +16,7 @@ import javax.inject.Inject;
 import java.util.Map;
 
 @Secured(SecurityRule.IS_ANONYMOUS)
-@Controller("/")
+@Controller("/jeff")
 public class RenderController implements IOperations {
 
     @Inject
