@@ -1,24 +1,16 @@
----
 micronaut:
   application:
     name: micronaut-freemarker-aws-example
 
----
+  http:
+    services:
+      my-client:
+        url: "${APIGW_BASE_URL:`http://localhost:8080`}"
+        path: "/"
 
-micronaut:
   views:
-#    folder: file:/Users/jeff/dev/cci/micronaut-pocs/phoenix/render/src/main/resources/views
     freemarker:
       enabled: true
-#      template:
-#        Configuration:
-
-  router:
-    static-resources:
-      public:
-          enabled: true
-          paths: classpath:public
-          mapping: /public/**
 
   security:
     enabled: disabled
